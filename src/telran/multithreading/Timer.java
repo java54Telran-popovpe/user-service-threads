@@ -15,12 +15,13 @@ public class Timer extends Thread {
 	}
 	
 	public void run() {
-		while( true  ) {
+		boolean running = true;
+		while( running  ) {
 			System.out.println(LocalTime.now().format(formatter));
 			try {
 				sleep(displayInterval);
 			} catch (InterruptedException e) {
-				return;
+				running = false;
 			}
 		}
 		
